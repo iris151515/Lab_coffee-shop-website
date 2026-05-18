@@ -1,54 +1,69 @@
-.navBar {
-    display: flex;
-    background-color: lightgoldenrodyellow;
-    padding: 20px;
-    margin: 10px;
+body {
+    background-color: #f7f3ee;
+    color: #4b3832;
+    font-family: sans-serif;
+
+    margin: 0;  /* 將body預設值清0 */
+    padding: 0;
+    box-sizing: border-box;  
 }
 
-.navBar>div {
-    border: 1px solid black;
-} 
+
+.navBar {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;  /* 第一個元素靠左、最後一個元素靠右 */
+    align-items: center;
+    padding: 5px 20px;  /* 上下:5、左右:20 */
+
+    /* 置頂 */
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    box-sizing: border-box;
+    /* 設定的width, height等於元素總寬高 (元素寬高 + padding + border) */
+}
+
+.logo {
+    height: 60px;
+}
+ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+
+
 
 .heroSec {
-    background-color: lightsalmon;
-    padding: 20px;
-    margin: 10px;
+    height: 550px;
+    background-image: url("./hero.jpg");
+    background-size: cover;
+    background-position: center;
     text-align: center;
+    margin-top: 90px;  /* 從視窗頂端往下(要隨navBar高度調整) */
+    margin-bottom: 10px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
-.heroSec>div {
-    border: 1px solid black;
-}
 
-.categoryGrid {
+
+.card_sec {
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows:auto auto auto ;
-    background-color: lightseagreen;
-    padding: 20px;
-    margin: 10px;
-    text-align: center;
+    padding: 150px;
+    /* grid-template-columns: 340px 340px 340px; */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 100px;
+    /* margin: 0 auto; */
 }
-
-.categoryGrid>div {
-    border: 1px solid black;
+.cafe_card {
+    max-width: 340px;
+    background-color: white;
+    padding: 30px;
 }
-
-.playGrid {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    background-color: lightskyblue;
-    padding: 20px;
-    margin: 10px;
-    text-align: center;
-}
-
-.playGrid>div {
-    border: 1px solid black;
-}
-
-.footer {
-    background-color: lightslategray;
-    padding: 20px;
-    margin: 10px;
+.cafe_card img {
+    width: 100%;
 }
