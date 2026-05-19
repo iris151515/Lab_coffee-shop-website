@@ -33,18 +33,18 @@
     </section>
 
 
-
+    
     <!-- 所有咖啡廳 -->
-    <section class="card_sec">
+    <section class="card_sec" id="card_container">
 
-        <div class="cafe_card">
+        <!-- <div class="cafe_card">
             <img src="./fakecafe.jpg">
             <h4>1號咖啡</h4>
             <p>1號簡介</p>
             <p>1號地區</p>
         </div>
         <div class="cafe_card">
-            <img src="./fakecafe.jpg">
+            <img src="./fakecafe2.jpg">
             <h4>2號咖啡</h4>
             <p>2號簡介</p>
             <p>2號地區</p>
@@ -60,90 +60,12 @@
             <h4>4號咖啡</h4>
             <p>4號簡介</p>
             <p>4號地區</p>
-        <!-- </div>
+        </div>
         <div class="cafe_card">
             <img src="./fakecafe.jpg">
             <h4>5號咖啡</h4>
             <p>5號簡介</p>
             <p>5號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>6號咖啡</h4>
-            <p>6號簡介</p>
-            <p>6號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>7號咖啡</h4>
-            <p>7號簡介</p>
-            <p>7號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>8號咖啡</h4>
-            <p>8號簡介</p>
-            <p>8號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>9號咖啡</h4>
-            <p>9號簡介</p>
-            <p>9號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>10號咖啡</h4>
-            <p>10號簡介</p>
-            <p>10號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>11號咖啡</h4>
-            <p>11號簡介</p>
-            <p>11號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>12號咖啡</h4>
-            <p>12號簡介</p>
-            <p>12號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>13號咖啡</h4>
-            <p>13號簡介</p>
-            <p>13號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>14號咖啡</h4>
-            <p>14號簡介</p>
-            <p>14號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>15號咖啡</h4>
-            <p>15號簡介</p>
-            <p>15號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>16號咖啡</h4>
-            <p>16號簡介</p>
-            <p>16號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>17號咖啡</h4>
-            <p>17號簡介</p>
-            <p>17號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>18號咖啡</h4>
-            <p>18號簡介</p>
-            <p>18號地區</p>
         </div> -->
 
     </section>
@@ -157,6 +79,36 @@
 
     <!-- 頁尾 -->
     <div class="footer">聯絡我們</div>
+
+
+
+    <script>
+        var cafeList = [
+        {pic: "fakecafe.jpg", name: "1號咖啡", highlight: "1號簡介", dist: "1號地區"},
+        {pic: "fakecafe2.jpg", name: "2號咖啡", highlight: "2號簡介", dist: "2號地區"},
+        {pic: "fakecafe.jpg", name: "3號咖啡", highlight: "3號簡介", dist: "3號地區"},
+        {pic: "fakecafe.jpg", name: "4號咖啡", highlight: "4號簡介", dist: "4號地區"},
+        {pic: "fakecafe2.jpg", name: "5號咖啡", highlight: "5號簡介", dist: "5號地區"},
+        ];
+
+        var temp = "";
+        for (var i = 0; i < cafeList.length; i++) {
+            
+            var this_cafe = cafeList[i];
+            
+            temp += `
+            <div class="cafe_card">
+                <img src=${this_cafe.pic}>
+                <h3>${this_cafe.name}</h3>
+                <p>${this_cafe.highlight}</p>
+                <p>${this_cafe.dist}</p>
+            </div>
+            ` 
+        }
+        console.log(temp);
+        
+        document.getElementById("card_container").innerHTML = temp;
+    </script>
 
 
 </body>

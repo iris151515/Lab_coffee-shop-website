@@ -43,7 +43,7 @@ ul {
     background-size: cover;
     background-position: center;
     text-align: center;
-    margin-top: 90px;  /* 從視窗頂端往下(要隨navBar高度調整) */
+    margin-top: 70px;  /* 從視窗頂端往下(要隨navBar高度調整) */
     margin-bottom: 10px;
     margin-left: 8px;
     margin-right: 8px;
@@ -63,7 +63,15 @@ ul {
     max-width: 340px;
     background-color: white;
     padding: 30px;
+    
+    /* boder待調整(參考：https://html-css-js.com/css/generator/border-radius/) */
+    border: 5px solid #A4938F;
+    border-radius: 40px;
+    /* box-shadow? line-height? */
+    
 }
 .cafe_card img {
     width: 100%;
+    aspect-ratio: 3/4;
+    /* object-fit: cover; */
 }
