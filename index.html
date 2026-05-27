@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>一隅</title>
-
+    <!-- Bootstrap CSS: -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="./style.css">
+    
+    <!-- jQuery: -->
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -17,7 +22,7 @@
         <img src="./11uu.png" alt="logo圖" class="logo">
         <ul>
             <li>角落</li>
-            <li>探索</li>
+            <li><a href="#card_container" class="navbarLink">探索</a></li>
             <li>收藏</li>
         </ul>
     </nav>
@@ -26,49 +31,53 @@
     <!-- 主視覺 -->
     <section class="heroSec">
         <div class="hero_text">
-            <h3>主題</h3>
-            <p>簡介</p>
+            <!-- <h3>主題</h3> -->
+            <p>偌大城市，有一隅為你而留。</p>
         </div>
 
     </section>
 
+
+    <!-- 篩選區 -->
+    <section class="select">
+        <div id="selectedTags">今天想待的角落：</div>
+        <div id="tagPool">這裡放所有標籤按鈕</div>
+        <button id="searchButton">開始探索</button>
+    </section>
 
     
     <!-- 所有咖啡廳 -->
-    <section class="card_sec" id="card_container">
+    <section class="card_sec" id="card_container"></section>
 
-        <!-- <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>1號咖啡</h4>
-            <p>1號簡介</p>
-            <p>1號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe2.jpg">
-            <h4>2號咖啡</h4>
-            <p>2號簡介</p>
-            <p>2號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>3號咖啡</h4>
-            <p>3號簡介</p>
-            <p>3號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>4號咖啡</h4>
-            <p>4號簡介</p>
-            <p>4號地區</p>
-        </div>
-        <div class="cafe_card">
-            <img src="./fakecafe.jpg">
-            <h4>5號咖啡</h4>
-            <p>5號簡介</p>
-            <p>5號地區</p>
-        </div> -->
+    <!-- Modal互動視窗 -->
+    <div class="modal fade" id="cafe_modal">
 
-    </section>
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+
+            <div class="modal-content d-flex flex-row p-5">
+                <!-- 左：圖片 -->
+                <div class="modal-left w-50 p-5">
+                    <img src="./modal_img1.jpg">
+                </div>
+                <!-- 右：關閉按鈕+文字內容 -->
+                <div class="modal-right w-50 p-5">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                    <div class="w-100 h-100">
+                        <h4>店名</h4>
+                        <p>一句介紹</p>
+                        <div>所有標籤</div>
+                        <p>推薦給...</p>
+                        <p>地區</p>
+                        <a href="https://maps.app.goo.gl/Xir8xgHPArYdqdKg9" target="_blank" rel="noopener noreferrer">前往角落</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 
     <!-- 關於網站 -->
     <section>
@@ -83,34 +92,58 @@
 
 
     <script>
-        var cafeList = [
-        {pic: "fakecafe.jpg", name: "1號咖啡", highlight: "1號簡介", dist: "1號地區"},
-        {pic: "fakecafe2.jpg", name: "2號咖啡", highlight: "2號簡介", dist: "2號地區"},
-        {pic: "fakecafe.jpg", name: "3號咖啡", highlight: "3號簡介", dist: "3號地區"},
-        {pic: "fakecafe.jpg", name: "4號咖啡", highlight: "4號簡介", dist: "4號地區"},
-        {pic: "fakecafe2.jpg", name: "5號咖啡", highlight: "5號簡介", dist: "5號地區"},
-        ];
 
-        var temp = "";
-        for (var i = 0; i < cafeList.length; i++) {
+        $(document).ready(function () {
+
+            // 顯示所有咖啡廳
+            var cafeList = [
+            {pic: "fakecafe.jpg", name: "南青山咖啡", highlight: "和貓咪共度悠閒午後", tag: "#不限時 #輕食", dist: "南區"},
+            {pic: "fakecafe2.jpg", name: "悅癮咖啡 Andorfin Coffee", highlight: "咖啡與美食，愉悅成癮的日常", tag: "#早晨營業 #精品咖啡 #不限時", dist: "南屯區"},
+            {pic: "fakecafe.jpg", name: "3號咖啡", highlight: "3號簡介", tag: "標籤", dist: "3號地區"},
+            {pic: "fakecafe.jpg", name: "4號咖啡", highlight: "4號簡介", tag: "標籤", dist: "4號地區"},
+            {pic: "fakecafe2.jpg", name: "5號咖啡", highlight: "5號簡介", tag: "標籤", dist: "5號地區"},
+            ];
+    
+            var temp = "";
+            for (var i = 0; i < cafeList.length; i++) {
+                
+                var this_cafe = cafeList[i];
+                var cafeId = `cafe_${i+1}`;
+                
+                temp += `
+                <div class="cafe_card" id=${cafeId}>
+                    <img src=${this_cafe.pic}>
+                    <div class="cafe_info">
+                        <h5>${this_cafe.name}</h5>
+                        <p>${this_cafe.highlight}</p>
+                        <p>${this_cafe.tag}</p>                
+                        <p>${this_cafe.dist}</p>
+                    </div>
+                </div>
+                ` 
+            }               
+            document.getElementById("card_container").innerHTML = temp;
+            // end --顯示所有咖啡廳      
             
-            var this_cafe = cafeList[i];
             
-            temp += `
-            <div class="cafe_card">
-                <img src=${this_cafe.pic}>
-                <h3>${this_cafe.name}</h3>
-                <p>${this_cafe.highlight}</p>
-                <p>${this_cafe.dist}</p>
-            </div>
-            ` 
-        }
-        console.log(temp);
-        
-        document.getElementById("card_container").innerHTML = temp;
+            
+            // 點卡片顯示modal
+            $("#cafe_1").on("click", function () {
+                var modalElement = document.getElementById("cafe_modal");
+                var modal = new bootstrap.Modal(modalElement);
+                modal.show();                     
+            })
+            
+        })
+
+
+
     </script>
 
 
+
+    <!-- Bootstrap JS:-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
