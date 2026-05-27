@@ -40,8 +40,19 @@
 
     <!-- 篩選區 -->
     <section class="select">
-        <div id="selectedTags">今天想待的角落：</div>
-        <div id="tagPool">這裡放所有標籤按鈕</div>
+        <div id="selectedTags">今天想待的角落/想找什麼樣的角落：</div>
+        <hr>
+        <div id="tagPool">
+            <button class="tag_button">&nbsp;#標籤1&nbsp;</button>
+            <button class="tag_button">&nbsp;#標籤2&nbsp;</button>
+            <button class="tag_button">&nbsp;#標籤3&nbsp;</button>
+            <button class="tag_button">&nbsp;#標籤4&nbsp;</button>
+            <button class="tag_button">&nbsp;#標籤5&nbsp;</button>
+            <button class="tag_button">&nbsp;#標籤6&nbsp;</button>
+            <button class="tag_button">&nbsp;#標籤7&nbsp;</button>
+            <button class="tag_button">&nbsp;#標籤8&nbsp;</button>
+        </div>
+        <br>
         <button id="searchButton">開始探索</button>
     </section>
 
@@ -57,18 +68,19 @@
             <div class="modal-content d-flex flex-row p-5">
                 <!-- 左：圖片 -->
                 <div class="modal-left w-50 p-5">
-                    <img src="./modal_img1.jpg">
+                    <!-- <img src="./modal_img1.jpg"> -->
+                    <img id="modalImg">
                 </div>
                 <!-- 右：關閉按鈕+文字內容 -->
                 <div class="modal-right w-50 p-5">
                     <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
-                    <div class="w-100 h-100">
-                        <h4>店名</h4>
+                    <div class="w-100 h-100" id="modalText">
+                        <!-- <h4>店名</h4>
                         <p>一句介紹</p>
                         <div>所有標籤</div>
                         <p>推薦給...</p>
                         <p>地區</p>
-                        <a href="https://maps.app.goo.gl/Xir8xgHPArYdqdKg9" target="_blank" rel="noopener noreferrer">前往角落</a>
+                        <a href="https://maps.app.goo.gl/Xir8xgHPArYdqdKg9" target="_blank" rel="noopener noreferrer">前往角落</a> -->
                     </div>
                 </div>
 
@@ -90,33 +102,45 @@
     <div class="footer">聯絡我們</div>
 
 
-
+    <script src="./data.js"></script>
     <script>
 
-        $(document).ready(function () {
+        $(document).ready(function () { 
+
+            
+            // 點擊標籤按鈕
+            $(".tag_button").on("click",function () {
+                var thisTag = $(this).text();
+
+                var select_title = $("#selectedTags").text();
+                
+                if (select_title.includes(thisTag)) {
+                    select_title = select_title.replace(thisTag, "");
+                    // console.log(`if stituation, select_title = ${select_title}`);
+                                        
+                } else {
+                    select_title = select_title + thisTag;
+                    // console.log(`else stituation, select_title = ${select_title}`);
+                }
+                $("#selectedTags").text(select_title);
+                // $("#selectedTags").append(thisTag);                                
+            })
+
 
             // 顯示所有咖啡廳
-            var cafeList = [
-            {pic: "fakecafe.jpg", name: "南青山咖啡", highlight: "和貓咪共度悠閒午後", tag: "#不限時 #輕食", dist: "南區"},
-            {pic: "fakecafe2.jpg", name: "悅癮咖啡 Andorfin Coffee", highlight: "咖啡與美食，愉悅成癮的日常", tag: "#早晨營業 #精品咖啡 #不限時", dist: "南屯區"},
-            {pic: "fakecafe.jpg", name: "3號咖啡", highlight: "3號簡介", tag: "標籤", dist: "3號地區"},
-            {pic: "fakecafe.jpg", name: "4號咖啡", highlight: "4號簡介", tag: "標籤", dist: "4號地區"},
-            {pic: "fakecafe2.jpg", name: "5號咖啡", highlight: "5號簡介", tag: "標籤", dist: "5號地區"},
-            ];
-    
             var temp = "";
             for (var i = 0; i < cafeList.length; i++) {
                 
                 var this_cafe = cafeList[i];
-                var cafeId = `cafe_${i+1}`;
+                // var cafeId = `cafe_${i+1}`;
                 
                 temp += `
-                <div class="cafe_card" id=${cafeId}>
+                <div class="cafe_card">
                     <img src=${this_cafe.pic}>
                     <div class="cafe_info">
                         <h5>${this_cafe.name}</h5>
                         <p>${this_cafe.highlight}</p>
-                        <p>${this_cafe.tag}</p>                
+                        <span>${this_cafe.tag}</span>                
                         <p>${this_cafe.dist}</p>
                     </div>
                 </div>
@@ -128,7 +152,23 @@
             
             
             // 點卡片顯示modal
-            $("#cafe_1").on("click", function () {
+            $(".cafe_card").on("click", function () {
+                var choosen_index = $(this).index();
+                var choosen_card = cafeList[choosen_index];
+                console.log(choosen_card);
+
+                document.getElementById("modalImg").src = choosen_card.pic;
+                var text_temp = `
+                        <h4>${choosen_card.name}</h4>
+                        <p>${choosen_card.highlight}</p>
+                        <div>${choosen_card.tag}</div>
+                        <br>
+                        <p>推薦給...</p>
+                        <p>${choosen_card.dist}</p>
+                        <a href=${choosen_card.map} target="_blank" rel="noopener noreferrer">前往角落</a>
+                `;
+                document.getElementById("modalText").innerHTML = text_temp;
+                
                 var modalElement = document.getElementById("cafe_modal");
                 var modal = new bootstrap.Modal(modalElement);
                 modal.show();                     
