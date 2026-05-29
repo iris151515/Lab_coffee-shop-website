@@ -3,43 +3,52 @@ body {
     color: #4b3832;
     font-family: sans-serif;
 
-    margin: 0;  /* 將body預設值清0 */
+    margin: 0;
+    /* 將body預設值清0 */
     padding: 0;
-    box-sizing: border-box;  
+    box-sizing: border-box;
 }
 
 
 .navBar {
     background-color: white;
     display: flex;
-    justify-content: space-between;  /* 第一個元素靠左、最後一個元素靠右 */
+    justify-content: space-between;
+    /* 第一個元素靠左、最後一個元素靠右 */
     align-items: center;
-    padding: 5px 20px;  /* 上下:5、左右:20 */
+    padding: 5px 20px;
+    /* 上下:5、左右:20 */
 
     /* 置頂 */
     position: fixed;
     top: 0;
-     z-index: 1000;   /* 浮在最上層 */
+    z-index: 1000;
+    /* 浮在最上層 */
 
     width: 100%;
     box-sizing: border-box;
     /* 設定的width, height等於元素總寬高 (元素寬高 + padding + border) */
 }
+
 .logo {
     height: 60px;
 }
+
 ul {
     display: flex;
     list-style: none;
     gap: 40px;
 }
+
 .navbarLink {
     text-decoration: none;
     color: #4b3832;
 }
+
 .navbarLink:visited {
     color: #4b3832;
 }
+
 .navbarLink:hover {
     color: #c7b198
 }
@@ -52,12 +61,14 @@ ul {
     background-size: cover;
     background-position: center;
     text-align: center;
-    margin-top: 70px;  /* 從視窗頂端往下(要隨navBar高度調整) */
+    margin-top: 70px;
+    /* 從視窗頂端往下(要隨navBar高度調整) */
     margin-bottom: 10px;
     margin-left: 8px;
     margin-right: 8px;
     position: relative;
 }
+
 .hero_text {
     font-size: 40px;
     position: absolute;
@@ -65,10 +76,31 @@ ul {
     left: 20%;
 }
 
-.select{
-    display: grid;
-    padding: 100px; 
+.select {
+    /* display: grid; */
+    padding: 150px 300px 0px 300px;
 }
+
+.vibe_btn, .area_btn {
+    color: #4b3832;
+    background-color: #fffdf8;
+    border: 0.5px solid #ece7e0;
+    border-radius: 30px;
+    padding: 5px 15px;    
+}
+/* .tag_button:hover {
+    background-color: #ebe7dd;
+} */
+.button_selected {
+    background-color: #e0d9d0;
+    /* color: #d8cfc4;
+    color: #d8c3a5;
+    color: #c7b198;
+    color: #A4938F;
+    color: #8b7d77; */
+}
+
+
 
 
 .card_sec {
@@ -79,11 +111,12 @@ ul {
     gap: 100px;
     /* margin: 0 auto; */
 }
+
 .cafe_card {
     max-width: 340px;
     background-color: #fffdf8;
     padding: 30px;
-    
+
     /* boder待調整(參考：https://html-css-js.com/css/generator/border-radius/) */
     border: 3px solid #d8cfc4;
     border-radius: 40px;
@@ -91,6 +124,7 @@ ul {
 
     cursor: pointer;
 }
+
 .cafe_card img {
     width: 100%;
     aspect-ratio: 3/4;
@@ -100,15 +134,18 @@ ul {
 .modal-content {
     position: relative;
 }
+
 .modal-right button {
     /* 關閉按鈕固定在右上 */
     position: absolute;
     top: 20px;
     right: 20px;
 }
+
 .modal-right a:visited {
     color: #A4938F;
 }
+
 .modal-right a:hover {
     color: #c7b198;
 }
