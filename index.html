@@ -24,7 +24,7 @@
         <img src="./11uu.png" alt="logo圖" class="logo">
         <ul>
             <li>角落</li>
-            <li><a href="#card_container" class="navbarLink">探索</a></li>
+            <li><a href="#selectSec" class="navbarLink">探索</a></li>
             <li>收藏</li>
         </ul>
     </nav>
@@ -34,14 +34,86 @@
     <section class="heroSec">
         <div class="hero_text">
             <!-- <h3>主題</h3> -->
-            <p>偌大城市，有一隅為你而留。</p>
+            <p><i>偌大城市，有一隅為你而留。</i></p>
         </div>
 
     </section>
 
 
+
+    <!-- 本週角落區 -->
+    <section class="weekly-corner">
+
+        <div class="corner-image">
+            <img src="corner.jpg">
+        </div>
+
+        <div class="corner-info">
+
+            <div class="corner-header">
+                <p class="corner-label">🌿 本週角落</p>
+                <h2>覓靚</h2>
+                <p class="corner-subtitle">藏身柳川旁的巷弄深處，一處被樹影與咖啡香包圍的小院。</p>
+            </div>
+    
+            <div class="corner-content">
+                <p>
+                    藏身柳川旁的巷弄深處，覓靚有著被樹影與陽光包圍的小院子，
+                    以及悠閒穿梭其間的店貓。
+                </p>
+                <p>
+                    老屋裡飄著咖啡香，有人看書、有人發呆，
+                    也有人與朋友輕聲聊天。
+                </p>
+                <p>
+                    在這裡，時間似乎走得慢一些。
+                </p>
+            </div>
+    
+            <div class="visitor-quote">
+                <h3>📖 來訪者留下的片段</h3>
+                <blockquote>
+                    「藏在小巷裡的一間寶藏咖啡廳，
+                    不仔細找真的會錯過，
+                    但一走進來就會愛上。」
+                </blockquote>
+            </div>
+    
+            <div class="corner-tags">
+                <span>#庭院空間</span>
+                <span>#貓店長</span>
+                <span>#巷弄秘境</span>
+                <span>#老宅</span>
+                <span>#自然光</span>
+            </div>
+    
+            <div class="corner-explore">
+                <p>想找屬於自己的角落嗎？</p>
+                <a href="#filterSection" class="explore-btn">
+                    開始探索 ↓
+                </a>
+            </div>
+        </div>
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- 篩選區 -->
-    <section class="select">
+    <section class="select_sec" id="selectSec">
         <p>想找什麼樣的角落？</p>
         <p>環境氛圍：</p>
         <div id="vibeBtnPool">
@@ -56,19 +128,26 @@
         </div>
         <br>
         <p>地區：</p>
+        <!-- ps.所有地區都需列出來!!!! -->
         <div id="areaBtnPool">
             <button class="area_btn">南屯區</button>
             <button class="area_btn">南區</button>
             <button class="area_btn">西區</button>
             <button class="area_btn">西屯區</button>
+            <button class="area_btn">太平區</button>
         </div>
         <br>
         <button id="searchButton">開始探索</button>
+        <button id="clearBtn">清除篩選</button>
     </section>
 
 
     <!-- 所有咖啡廳 -->
-    <section class="card_sec" id="card_container"></section>
+    <section class="card_sec">
+        <h2 id="cardSecTittle">所有角落</h2>
+        <p id="remindMsg"></p>
+        <div id="card_container"></div>
+    </section>
 
     <!-- Modal互動視窗 -->
     <div class="modal fade" id="cafe_modal">
@@ -119,37 +198,37 @@
 
             // 點擊標籤按鈕
             $(".vibe_btn").on("click", function () {
-                $(this).toggleClass("button_selected");
+                $(this).toggleClass("button_selec_seced");
             })
             $(".area_btn").on("click", function () {
-                $(this).toggleClass("button_selected");
+                $(this).toggleClass("button_selec_seced");
             })
 
 
 
             var currentList = [];   //-->現在的咖啡廳卡片list
 
-            // 點擊「開始探索」按鈕
+            // 點擊「開始探索」按鈕：
             $("#searchButton").on("click", function () {
-                //  = .trim();
-                // var selVibeList = .split(/\s+/);
-                // var selVibeList = $(".button_selected").text().split("#").slice(1);
-                // console.log($(".button_selected"));
+                // 取得篩選條件：
                 var selAreaList = [];  //-->選擇的地區集合
-                $(".area_btn.button_selected").each(function () {
+                $(".area_btn.button_selec_seced").each(function () {
                     var selAreaTag = $(this).text()
                     selAreaList.push(selAreaTag);
                 })
-
+                if (selAreaList.length == 0) {   //若未選擇地區==>視為全選
+                    $(".area_btn").each(function () {
+                        var selAreaTag = $(this).text()
+                        selAreaList.push(selAreaTag);
+                    })
+                }
                 var selVibeList = [];  //-->選擇的氛圍標籤
-                $(".vibe_btn.button_selected").each(function () {
+                $(".vibe_btn.button_selec_seced").each(function () {
                     var selVibeTag = $(this).text()
                     selVibeList.push(selVibeTag);
-                })             
-
+                })
 
                 // 找出符合條件的咖啡廳：  !!若無符合？ !!篩選後若想看所有咖啡廳？
-
                 // var answer = cafeList[0].tag.includes("#店貓");
                 // console.log(`南青山咖啡的tag包含"#店貓"嗎：${answer}`);
                 // var answer2 = selVibeList.every(function (item) {
@@ -170,24 +249,23 @@
                 // });
                 // console.log(finalAnswer);               
 
-                // 符合條件的咖啡廳: newcafeList
+                // 符合條件的咖啡廳建立成newcafeList:
                 var newcafeList = cafeList.filter(function (cafeListObj) {
                     if (selAreaList.includes(cafeListObj.dist)) {
                         // console.log(`${cafeListObj.num}的地區符合條件!`);                                               
-                        var result2 = selVibeList.every(function (item) {                           
+                        var result2 = selVibeList.every(function (item) {
                             var result1 = cafeListObj.tag.includes(item);
                             // console.log(`${cafeListObj.name}的tag包含${item}嗎：${result1}`);
                             return result1;
                         });
                         // console.log(`標籤都有被包含嗎：${result2}`);                        
-                        return result2;                  
+                        return result2;
                     }
                     // else {
                     //     console.log(`${cafeListObj.num}的地區「不」符合條件!`);
                     // }
                 });
-                console.log(newcafeList);
-                
+                // console.log(newcafeList);
                 // for (let i = 0; i < cafeList.length; i++) {
                 //     // console.log(`第${i+1}家cafe`);
                 //     for (let j = 0; j < selVibeList.length; j++) {
@@ -204,10 +282,33 @@
                 //     }
                 // }
                 // // console.log(newcafeList);
+                // 顯示符合條件的咖啡廳：
                 showCafeCard(newcafeList);
+                if ($(".button_selec_seced").length != 0) {  //真的有做篩選
 
-                // 清除按鈕紀錄
-                $(".button_selected").removeClass("button_selected");               
+                    $("#cardSecTittle").text("探索結果：");
+
+                    if (newcafeList.length == 0) {  //沒有找到符合的                        
+                        $("#remindMsg").append(
+                            "沒有找到符合條件的角落...<br><br>試著減少條件，或看看其他類型的空間吧。"
+                        );
+                    }
+                    else {
+                        $("#remindMsg").append(`找到 ${newcafeList.length} 個角落`);
+                    }
+                }
+                // 捲動到咖啡廳section:
+                document.getElementById("cardSecTittle").scrollIntoView();
+            })
+            //-- end of 點擊「開始探索」按鈕
+
+
+            // 點擊「清除篩選」按鈕：
+            $("#clearBtn").on("click", function () {
+                $(".button_selec_seced").removeClass("button_selec_seced");  //清除按鈕紀錄
+                $("#cardSecTittle").text("所有角落");
+                $("#remindMsg").text("");
+                showCafeCard(cafeList);
             })
 
 
@@ -216,13 +317,10 @@
 
                 currentList = dataList;
                 // console.log(currentList);
-                // console.log(`Now List is ${currentList}`);
-
                 var temp = "";
                 for (let i = 0; i < currentList.length; i++) {
 
                     var this_cafe = currentList[i];
-
                     temp += `
                     <div class="cafe_card">
                         <img src=${this_cafe.pic}>
@@ -236,18 +334,15 @@
                     `
                 }
                 $("#card_container").html(temp);
-
             }
+            //-- end of 顯示咖啡廳function:
 
             // 顯示所有咖啡廳
             showCafeCard(cafeList);
 
-
             // var temp = "";
             // for (let i = 0; i < cafeList.length; i++) {
-
             //     var this_cafe = cafeList[i];
-
             //     temp += `
             //     <div class="cafe_card">
             //         <img src=${this_cafe.pic}>
@@ -261,11 +356,9 @@
             //     `
             // }
             // $("#card_container").html(temp);
-            // end --顯示所有咖啡廳      
+            // end --顯示所有咖啡廳
 
-
-
-            // 點卡片顯示modal   !篩選後的卡片綁定modal失敗
+            // 點卡片顯示modal
             $("#card_container").on("click", ".cafe_card", function () {
 
                 var choosen_index = $(this).index();
@@ -294,8 +387,10 @@
                 var modal = new bootstrap.Modal(modalElement);
                 modal.show();
             })
+            //-- end of 點卡片顯示modal
 
         })
+        //-- end of $(document).ready()
 
 
 
