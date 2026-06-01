@@ -46,14 +46,24 @@ body {
     margin-right: 40px;
     position: relative;
 }
-.hero_text {
-    color: #6b5c52;
-    text-align: left;
-    font-size: 40px;
-    font-style: italic;
+.hero_text {    
     position: absolute;
     top: 30%;
     left: 30%;
+}
+.hero_title {
+    color: #837266;
+    text-align: left;
+    font-size: 50px;
+    font-style: italic;
+}
+.hero_subtitle {
+    margin-top: 90px;
+    color: #837266;
+    text-align: left;
+    text-indent: 4em;
+    font-size: 20px;
+    font-style: italic;
 }
 
 
