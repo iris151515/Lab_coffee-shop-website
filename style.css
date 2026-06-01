@@ -3,15 +3,13 @@ body {
     color: #4b3832;
     font-family: sans-serif;
 
-    /* margin: 0; */
-    /* 將body預設值清0 */
-    padding: 0;
+    padding: 0; 
     box-sizing: border-box;
 }
 
 
+/*導覽列*/
 .navBar {
-    background-color: white;
     display: flex;
     justify-content: space-between;
     /* 第一個元素靠左、最後一個元素靠右 */
@@ -29,203 +27,161 @@ body {
     box-sizing: border-box;
     /* 設定的width, height等於元素總寬高 (元素寬高 + padding + border) */
 }
-
 .logo {
-    height: 60px;
-}
-
-ul {
-    display: flex;
-    list-style: none;
-    gap: 40px;
-}
-
-.navbarLink {
-    text-decoration: none;
-    color: #4b3832;
-}
-
-.navbarLink:visited {
-    color: #4b3832;
-}
-
-.navbarLink:hover {
-    color: #c7b198
+    height: 70px;
 }
 
 
-
+/*主視覺區*/
 .heroSec {
-    height: 550px;
-    background-image: url("./hero.jpg");
+    height: 680px;
+    background-image: url("./img/hero.jpg");
     background-size: cover;
     background-position: center;
     text-align: center;
-    margin-top: 70px;
+    margin-top: 110px;
     /* 從視窗頂端往下(要隨navBar高度調整) */
     margin-bottom: 10px;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: 40px;
+    margin-right: 40px;
     position: relative;
 }
-
 .hero_text {
+    color: #6b5c52;
+    text-align: left;
     font-size: 40px;
+    font-style: italic;
     position: absolute;
-    top: 20%;
-    left: 20%;
+    top: 30%;
+    left: 30%;
 }
 
 
-
-.weekly-corner{
-    max-width:1100px;
-    margin:100px auto;
-    padding:50px;
+/*本週角落區*/
+.weekly_corner{
+    max-width: 1000px;
+    margin: 150px auto;
+    padding: 50px;
     background:#faf8f5;
-    border-radius:24px;
-    display:flex;
-    gap:50px;
-    align-items:center;
+    border-radius: 24px;
+    /* display:flex;
+    gap: 50px;
+    align-items:center; */
 }
-.corner-image{
-
+.corner_title {
+    text-align: center;
+}
+.corner_info {
+    display:flex;
+    gap: 50px;
+    margin: 80px 0px;
+    /* align-items:center; */
+}
+.corner_image{
     flex:4;
 }
-.corner-info{
-
+.corner_text{
     flex:6;
 }
-.corner-image img{
-
-    width:100%;
-
-    height:500px;
-
-    object-fit:cover;
-
-    border-radius:18px;
+.corner_image img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 18px;
 }
-.corner-label{
-    font-size:14px;
-    letter-spacing:2px;
-    color:#8d7b6a;
-    margin-bottom:12px;
+.corner_header {
+    margin-bottom: 60px;
 }
-.corner-header h2{
-    font-size:36px;
-    font-weight:500;
-    margin-bottom:12px;
-}
-.corner-subtitle{
-    font-size:16px;
+.corner_subtitle{
+    font-size: 16px;
     color:#7a7068;
-    margin-bottom:50px;
 }
-.corner-content{
-    text-align:left;
-    max-width:650px;
-    margin:0 auto;
-    line-height:2.1;
-    font-size:17px;
+.corner_content p{
+    margin-bottom: 18px;
 }
-.corner-content p{
-    margin-bottom:18px;
-}
-.visitor-quote{
-    margin-top:60px;
-}
-.visitor-quote h3{
-    font-size:18px;
-    margin-bottom:20px;
-}
-.visitor-quote blockquote{
-    max-width:600px;
-    margin:0 auto;
-    padding:24px;
+.visitor_comment blockquote{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px;
     background:#f8f4ef;
-    border-radius:12px;
+    border-radius: 12px;
     font-style:italic;
-    line-height:1.8;
+    line-height: 1.8;
     color:#6a5b50;
 }
-.corner-tags{
-    margin-top:40px;
+.corner_tags{
+    margin-top: 40px;
 }
-.corner-tags span{
+.corner_tags span{
     display:inline-block;
-    margin:5px;
-    padding:6px 12px;
-    border-radius:20px;
+    margin: 5px;
+    padding: 6px 12px;
+    border-radius: 20px;
     background:#f2ede7;
     color:#7a7068;
-    font-size:14px;
+    font-size: 14px;
 }
-.corner-explore{
+.corner_explore{
+    text-align: center;
     margin-top:70px;
 }
-.corner-explore p{
+.corner_explore p{
     margin-bottom:18px;
     color:#7a7068;
 }
-.explore-btn{
-    display:inline-block;
-    padding:12px 24px;
-    border:1px solid #c7b9a9;
-    border-radius:30px;
-    text-decoration:none;
-    color:#4a3d35;
-    transition:.3s;
+.explore_btn{
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid #c7b9a9;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #4a3d35;
 }
-.explore-btn:hover{
+.explore_btn:hover{
+    color: #4a3d35;
     background:#ede5db;
 }
 
 
-
-
-
-
-
-
-
-
-
-
+/*篩選區*/
 .select_sec {
     /* display: grid; */
-    padding: 150px 200px 0px 200px;
+    padding: 150px 400px 100px 400px;
+    margin: 150px 0px;
+    text-align: center;
 }
-
 .vibe_btn, .area_btn {
     color: #4b3832;
+    font-size: 18px;
     background-color: #fffdf8;
     border: 0.5px solid #ece7e0;
     border-radius: 30px;
     padding: 5px 15px;    
 }
-/* .tag_button:hover {
-    background-color: #ebe7dd;
-} */
+.vibe_btn:hover {
+    background-color: #ede5db;
+}
+.area_btn:hover {
+    background-color: #ede5db;
+}
+.submit_btn {
+    margin-top: 100px;
+}
 .button_selected {
     background-color: #e0d9d0;
-    /* color: #d8cfc4;
-    color: #d8c3a5;
-    color: #c7b198;
-    color: #A4938F;
-    color: #8b7d77; */
 }
 
 
+/*咖啡廳卡片區*/
 .card_sec {
-    padding: 50px 150px;
+    margin: 150px 0px;
+    padding: 100px 300px;
 }
 #cardSecTittle, #remindMsg {
-    /* text-align: center; */
+    text-align: center;
     margin: 50px;
     scroll-margin-top: 80px;  /*避免捲動時被擋住，隨navBar高度調整*/
 }
-
 #card_container {
     display: grid;
     /* padding: 150px; */
@@ -234,7 +190,6 @@ ul {
     gap: 100px;
     /* margin: 0 auto; */
 }
-
 .cafe_card {
     max-width: 340px;
     background-color: #fffdf8;
@@ -247,38 +202,51 @@ ul {
 
     cursor: pointer;
 }
-
 .cafe_card img {
     width: 100%;
     aspect-ratio: 3/4;
+    border-radius: 20px;
     /* object-fit: cover; */
 }
 
+
+/*視窗*/
 .modal-content {
     position: relative;
 }
-
 .modal-right button {
     /* 關閉按鈕固定在右上 */
     position: absolute;
     top: 20px;
     right: 20px;
 }
-
+.modal-right a {
+    color: #A4938F;
+}
 .modal-right a:visited {
     color: #A4938F;
 }
-
 .modal-right a:hover {
     color: #c7b198;
 }
-
-
 .modal-left img {
     width: 100%;
     object-fit: contain;
+    border-radius: 18px;
 }
 
+
+/*About區*/
+.about_sec {
+    text-align: center;
+    padding: 300px 400px;
+}
+.about_sec h5 {
+    margin: 20px auto;
+}
+.about_content {
+    margin: 30px auto; 
+}
 
 
 /* color: #d8cfc4;
