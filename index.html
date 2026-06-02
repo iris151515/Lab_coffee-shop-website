@@ -268,7 +268,12 @@
                 showCafeCard(cafeList);
             })
 
+            // 點擊「逛逛所有角落」按鈕：
             $("#checkallBtn").on("click", function () {
+                $(".button_selected").removeClass("button_selected");  //清除按鈕紀錄
+                $("#cardSecTittle").text("所有角落");
+                $("#remindMsg").text("");
+                showCafeCard(cafeList);
                 document.getElementById("cardSecTittle").scrollIntoView();                
             })
 
